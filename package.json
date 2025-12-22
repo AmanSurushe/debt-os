@@ -1,0 +1,27 @@
+{
+  "name": "debt-os",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Agentic system for technical debt detection, prioritization, and remediation planning",
+  "license": "MIT",
+  "workspaces": [
+    "apps/*",
+    "libs/*"
+  ],
+  "scripts": {
+    "dev": "npm run dev --workspace=@debt-os/api",
+    "build": "npm run build --workspace=@debt-os/api",
+    "start": "npm run start --workspace=@debt-os/api",
+    "start:prod": "npm run start:prod --workspace=@debt-os/api",
+    "test": "npm run test --workspaces --if-present",
+    "lint": "npm run lint --workspaces --if-present",
+    "docker:up": "docker compose -f infra/docker-compose.yml up -d",
+    "docker:down": "docker compose -f infra/docker-compose.yml down",
+    "docker:logs": "docker compose -f infra/docker-compose.yml logs -f",
+    "db:migrate": "npm run migration:run --workspace=@debt-os/api",
+    "db:generate": "npm run migration:generate --workspace=@debt-os/api"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  }
+}
