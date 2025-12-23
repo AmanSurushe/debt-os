@@ -18,6 +18,8 @@
     "migration:revert": "typeorm migration:revert -d src/database/data-source.ts"
   },
   "dependencies": {
+    "@debt-os/embeddings": "*",
+    "@debt-os/git": "*",
     "@nestjs/bullmq": "^10.2.0",
     "@nestjs/common": "^10.4.0",
     "@nestjs/config": "^3.2.0",

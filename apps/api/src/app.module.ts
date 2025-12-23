@@ -10,6 +10,7 @@ import { ScanModule } from './modules/scan/scan.module';
 import { DebtModule } from './modules/debt/debt.module';
 import { WebhookModule } from './modules/webhook/webhook.module';
 import { HealthModule } from './modules/health/health.module';
+import { EmbeddingsModule } from './modules/embeddings/embeddings.module';
 import { QueueModule } from './queue/queue.module';
 
 import configuration from './config/configuration';
@@ -35,6 +36,7 @@ import configuration from './config/configuration';
     DebtModule,
     WebhookModule,
     HealthModule,
+    EmbeddingsModule,
   ],
 })
 export class AppModule {}

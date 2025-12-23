@@ -1,9 +1,15 @@
-import { Module } from '@nestjs/common';
+import { Module, forwardRef } from '@nestjs/common';
 import { BullModule } from '@nestjs/bullmq';
 import { ConfigModule, ConfigService } from '@nestjs/config';
+import { TypeOrmModule } from '@nestjs/typeorm';
 
 import { RepoSyncProcessor } from './processors/repo-sync.processor';
 import { ScanProcessor } from './processors/scan.processor';
+import { EmbeddingProcessor } from './processors/embedding.processor';
+import { EmbeddingsModule } from '../modules/embeddings/embeddings.module';
+import { Scan } from '../modules/scan/entities/scan.entity';
+import { FileSnapshot } from '../modules/scan/entities/file-snapshot.entity';
+import { Repository } from '../modules/repo/entities/repository.entity';
 
 // Queue names
 export const REPO_SYNC_QUEUE = 'repo-sync';
@@ -13,6 +19,8 @@ export const EMBEDDING_QUEUE = 'embedding';
 
 @Module({
   imports: [
+    ConfigModule,
+    TypeOrmModule.forFeature([Scan, FileSnapshot, Repository]),
     BullModule.forRootAsync({
       imports: [ConfigModule],
       inject: [ConfigService],
@@ -38,8 +46,9 @@ export const EMBEDDING_QUEUE = 'embedding';
       { name: ANALYSIS_QUEUE },
       { name: EMBEDDING_QUEUE },
     ),
+    forwardRef(() => EmbeddingsModule),
   ],
-  providers: [RepoSyncProcessor, ScanProcessor],
+  providers: [RepoSyncProcessor, ScanProcessor, EmbeddingProcessor],
   exports: [BullModule],
 })
 export class QueueModule {}

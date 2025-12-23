@@ -9,6 +9,7 @@ import {
 } from 'typeorm';
 import { Repository } from '../../repo/entities/repository.entity';
 import { DebtItem } from '../../debt/entities/debt-item.entity';
+import { FileSnapshot } from './file-snapshot.entity';
 
 export type ScanStatus = 'pending' | 'ingesting' | 'analyzing' | 'complete' | 'failed';
 export type ScanTrigger = 'manual' | 'webhook' | 'schedule';
@@ -70,6 +71,9 @@ export class Scan {
 
   @OneToMany(() => DebtItem, (debtItem) => debtItem.scan)
   debtItems: DebtItem[];
+
+  @OneToMany(() => FileSnapshot, (fileSnapshot) => fileSnapshot.scan)
+  fileSnapshots: FileSnapshot[];
 
   @CreateDateColumn({ name: 'created_at' })
   createdAt: Date;
