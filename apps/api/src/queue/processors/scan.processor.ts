@@ -11,7 +11,6 @@ import { Repository } from '../../modules/repo/entities/repository.entity';
 import { FileSnapshot } from '../../modules/scan/entities/file-snapshot.entity';
 import { GitService } from '@debt-os/git';
 import { detectLanguage } from '@debt-os/embeddings';
-import { EMBEDDING_QUEUE } from '../queue.module';
 import { EmbeddingJobData } from './embedding.processor';
 
 interface ScanJobData {
@@ -49,7 +48,7 @@ export class ScanProcessor extends WorkerHost {
     private repositoryRepository: TypeOrmRepository<Repository>,
     @InjectRepository(FileSnapshot)
     private fileSnapshotRepository: TypeOrmRepository<FileSnapshot>,
-    @InjectQueue(EMBEDDING_QUEUE)
+    @InjectQueue('embedding')
     private embeddingQueue: Queue<EmbeddingJobData>,
     private dataSource: DataSource,
     private configService: ConfigService,

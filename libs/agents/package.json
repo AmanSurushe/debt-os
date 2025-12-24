@@ -1,0 +1,29 @@
+{
+  "name": "@debt-os/agents",
+  "version": "0.1.0",
+  "private": true,
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.32.0",
+    "@langchain/anthropic": "^0.3.0",
+    "@langchain/core": "^0.3.0",
+    "@langchain/langgraph": "^0.2.0",
+    "@langchain/openai": "^0.3.0",
+    "openai": "^4.70.0",
+    "zod": "^3.23.8"
+  },
+  "peerDependencies": {
+    "@debt-os/llm": "*",
+    "@debt-os/git": "*",
+    "@debt-os/embeddings": "*"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "typescript": "^5.5.0"
+  }
+}

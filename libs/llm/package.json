@@ -1,0 +1,22 @@
+{
+  "name": "@debt-os/llm",
+  "version": "0.1.0",
+  "private": true,
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.32.0",
+    "handlebars": "^4.7.8",
+    "openai": "^4.70.0",
+    "tiktoken": "^1.0.17",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "typescript": "^5.5.0"
+  }
+}

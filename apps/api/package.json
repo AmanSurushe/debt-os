@@ -20,6 +20,7 @@
   "dependencies": {
     "@debt-os/embeddings": "*",
     "@debt-os/git": "*",
+    "@debt-os/llm": "*",
     "@nestjs/bullmq": "^10.2.0",
     "@nestjs/common": "^10.4.0",
     "@nestjs/config": "^3.2.0",
