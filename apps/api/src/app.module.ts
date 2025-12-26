@@ -12,6 +12,9 @@ import { WebhookModule } from './modules/webhook/webhook.module';
 import { HealthModule } from './modules/health/health.module';
 import { EmbeddingsModule } from './modules/embeddings/embeddings.module';
 import { LLMModule } from './modules/llm/llm.module';
+import { GitModule } from './modules/git/git.module';
+import { AgentsModule } from './modules/agents/agents.module';
+import { MemoryModule } from './modules/memory/memory.module';
 import { QueueModule } from './queue/queue.module';
 
 import configuration from './config/configuration';
@@ -39,6 +42,9 @@ import configuration from './config/configuration';
     HealthModule,
     EmbeddingsModule,
     LLMModule,
+    GitModule,
+    AgentsModule,
+    MemoryModule,
   ],
 })
 export class AppModule {}

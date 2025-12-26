@@ -39,7 +39,6 @@ const IGNORED_DIRECTORIES = new Set([
 @Processor('scan')
 export class ScanProcessor extends WorkerHost {
   private readonly logger = new Logger(ScanProcessor.name);
-  private gitService: GitService;
 
   constructor(
     @InjectRepository(Scan)
@@ -52,10 +51,9 @@ export class ScanProcessor extends WorkerHost {
     private embeddingQueue: Queue<EmbeddingJobData>,
     private dataSource: DataSource,
     private configService: ConfigService,
+    private gitService: GitService,
   ) {
     super();
-    const basePath = this.configService.get<string>('repoStorage.basePath') || '/tmp/debt-os/repos';
-    this.gitService = new GitService({ basePath });
   }
 
   async process(job: Job<ScanJobData>): Promise<void> {
