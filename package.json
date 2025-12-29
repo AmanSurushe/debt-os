@@ -10,7 +10,10 @@
   ],
   "scripts": {
     "dev": "npm run dev --workspace=@debt-os/api",
+    "dev:dashboard": "npm run dev --workspace=@debt-os/dashboard",
+    "dev:all": "concurrently \"npm run dev\" \"npm run dev:dashboard\"",
     "build": "npm run build --workspace=@debt-os/api",
+    "build:dashboard": "npm run build --workspace=@debt-os/dashboard",
     "start": "npm run start --workspace=@debt-os/api",
     "start:prod": "npm run start:prod --workspace=@debt-os/api",
     "test": "npm run test --workspaces --if-present",
